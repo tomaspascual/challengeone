@@ -1,6 +1,7 @@
 package com.wabi.challengeone.dto;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
 import lombok.extern.java.Log;
 
 @Data
