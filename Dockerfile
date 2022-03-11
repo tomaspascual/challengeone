@@ -4,15 +4,18 @@ RUN apk add bash
 
 WORKDIR /app
 
+COPY deniro.csv deniro.csv
 COPY chinook.db chinook.db
 COPY target/app.jar app.jar
 
+RUN addgroup -S spring && adduser -S spring -G spring
+RUN chown -R spring:spring /app
+RUN chmod 755 /app
+
 EXPOSE 8080
 
-#RUN addgroup -S spring && adduser -S spring -G spring
-#RUN chown -R spring:spring /app
-#RUN chmod 755 /app
-#USER spring:spring
+
+USER spring:spring
 
 
 

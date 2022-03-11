@@ -11,17 +11,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ResourceUtils;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.StringWriter;
+import java.io.*;
 import java.util.stream.Stream;
 
 @Component
 public class IOComponent {
 
-    @Value("classpath:data/deniro.csv")
+    @Value("/app/deniro.csv")
     Resource resource;
 
     private final static Logger logger = LoggerFactory.getLogger(IOComponent.class);
@@ -32,6 +30,8 @@ public class IOComponent {
     }
 
     private Stream<FilmDTO> readCsvStream() throws IOException {
+        //Reader r = new FileReader(resource.getFile());
+
         Reader r = new FileReader(resource.getFile());
         CSVFormat format = CSVFormat.Builder.create(CSVFormat.DEFAULT)
                 .setHeader()
