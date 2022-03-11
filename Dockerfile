@@ -4,8 +4,8 @@ RUN apk add bash
 
 WORKDIR /app
 
-COPY deniro.csv deniro.csv
-COPY chinook.db chinook.db
+COPY data/deniro.csv deniro.csv
+COPY data/chinook.db chinook.db
 COPY target/app.jar app.jar
 
 RUN addgroup -S spring && adduser -S spring -G spring

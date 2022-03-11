@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ResourceUtils;
@@ -20,7 +21,7 @@ import java.util.stream.Stream;
 public class IOComponent {
 
     @Value("/app/deniro.csv")
-    Resource resource;
+    FileSystemResource resource;
 
     private final static Logger logger = LoggerFactory.getLogger(IOComponent.class);
 
