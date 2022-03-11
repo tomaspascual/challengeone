@@ -1,7 +1,6 @@
 #CODE PROJECT TO USE AS AN STANDARD TEST
 
-##Sr Profile:
-
+Sr Profile:
 1. Could you describe the process of creating a new annotation in Springboot?
 2. 
 3. 
@@ -13,8 +12,7 @@
 9. 
 10. 
 
-##SSr Profile:
-
+SSr Profile:
 1. Describe the process of creating a new Datasource (Sqlite in this example) using only configuration properties
 2. What's a DTO? Why would you use it?
 3. Define REST API and which are the main http methods
