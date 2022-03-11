@@ -1,4 +1,4 @@
-#CODE PROJECT TO USE AS AN STANDARD TEST
+CODE PROJECT TO USE AS AN STANDARD TEST
 
 Sr Profile:
 1. Could you describe the process of creating a new annotation in Springboot?
