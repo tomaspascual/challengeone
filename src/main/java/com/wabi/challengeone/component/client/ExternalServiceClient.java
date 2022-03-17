@@ -22,10 +22,8 @@ public class ExternalServiceClient {
                 .uri(URI.create("https://blockchain.info/tobtc?currency=USD&value=500"))
                 .retrieve()
                 .bodyToMono(String.class)
-                .map(data -> {
-                    logger.info(data);
-                    return data;
-                });
+                .doOnNext(logger::info)
+                .doOnNext(logger::info);
     }
 
     public String requestExternalResttemplate() {
