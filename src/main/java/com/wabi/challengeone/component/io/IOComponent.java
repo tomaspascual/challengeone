@@ -26,11 +26,6 @@ public class IOComponent {
 
     private final static Logger logger = LoggerFactory.getLogger(IOComponent.class);
 
-
-    private ClassPathResource getExampleResource() {
-        return new ClassPathResource("deniro.csv");
-    }
-
     private Stream<FilmDTO> readCsvStream() throws IOException {
 
         FileSystemResource resource = new FileSystemResource(csvPath);
