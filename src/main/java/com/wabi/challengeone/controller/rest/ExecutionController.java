@@ -7,16 +7,18 @@ import com.wabi.challengeone.annotation.LogExecutionTime;
 import com.wabi.challengeone.component.client.ExternalServiceClient;
 import com.wabi.challengeone.component.io.IOComponent;
 import com.wabi.challengeone.component.sqlite.SQLiteComponent;
+import com.wabi.challengeone.component.strategies.StrategyComponent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 import java.io.IOException;
+import java.util.Optional;
+
 
 @RestController
 class ExecutionController {
@@ -31,6 +33,9 @@ class ExecutionController {
 
     @Autowired
     IOComponent ioComponent;
+
+    @Autowired
+    StrategyComponent strategyComponent;
 
     @GetMapping("/execution0")
     @LogExecutionTime
@@ -88,6 +93,13 @@ class ExecutionController {
             JsonNode exceptionObject = new ObjectMapper().convertValue(ioException, JsonNode.class);
             return ResponseEntity.internalServerError().body(exceptionObject);
         }
+    }
+
+    @RequestMapping(value={"/execution6/{amount}","/execution6/{amount}/{fiat}"}, method = RequestMethod.GET)
+    @LogExecutionTime
+    public ResponseEntity execution6(@PathVariable(required = true) Integer amount, @PathVariable(required = false) String fiat) {
+        strategyComponent.strategyExample(Optional.ofNullable(fiat), amount);
+        return ResponseEntity.ok().build();
     }
 
 
