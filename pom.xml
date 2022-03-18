@@ -115,6 +115,7 @@
 					</execution>
 				</executions>
 				<configuration>
+					<useProxy>false</useProxy>
 					<repository>wabi/${project.artifactId}</repository>
 					<tag>${project.version}</tag>
 					<buildArgs>
