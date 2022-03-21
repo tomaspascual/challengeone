@@ -30,7 +30,7 @@ ONBUILD RUN ["mvn", "-DskipTests=true", "clean", "package"]
 
 COPY data/deniro.csv deniro.csv
 COPY data/chinook.db chinook.db
-COPY --from=0 /target/app.jar app.jar
+COPY target/app.jar app.jar
 
 RUN addgroup -S spring && adduser -S spring -G spring
 RUN chown -R spring:spring /app
