@@ -9,18 +9,20 @@ WORKDIR /challengeone
 # Just echo so we can see, if everything is there :)
 RUN ls -l
 
+FROM heroku/heroku:18-build AS builder
+
 # Run Maven build
 RUN mvn clean package -Dmaven.test.skip
-
-FROM openjdk:12-alpine
-MAINTAINER Tomas Pascual
-RUN apk add bash
 
 WORKDIR /app
 COPY /challengeone/data/deniro.csv deniro.csv
 COPY /challengeone/data/chinook.db chinook.db
 #COPY /challengeone/target/app.jar app.jar
 COPY --from=0 "/challengeone/target/app.jar" app.jar
+
+FROM openjdk:12-alpine
+MAINTAINER Tomas Pascual
+RUN apk add bash
 
 RUN addgroup -S spring && adduser -S spring -G spring
 RUN chown -R spring:spring /app
