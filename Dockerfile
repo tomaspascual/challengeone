@@ -10,7 +10,7 @@ WORKDIR /challengeone
 RUN ls -l
 
 # Run Maven build
-RUN mvn clean install
+RUN mvn clean package -Dmaven.test.skip
 
 FROM openjdk:12-alpine
 MAINTAINER Tomas Pascual
