@@ -4,6 +4,8 @@ RUN apk add bash
 
 WORKDIR /app
 
+RUN ls -l
+
 COPY data/deniro.csv deniro.csv
 COPY data/chinook.db chinook.db
 COPY target/app.jar app.jar
