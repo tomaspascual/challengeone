@@ -1,46 +1,31 @@
+# Docker multi-stage build
+
+# 1. Building the App with Maven
+FROM maven:3-jdk-11
+
+ADD . /challengeone
+WORKDIR /challengeone
+
+# Just echo so we can see, if everything is there :)
+RUN ls -l
+
+# Run Maven build
+RUN mvn clean install
+
 FROM openjdk:12-alpine
-
 MAINTAINER Tomas Pascual
-
 RUN apk add bash
 
 WORKDIR /app
-
-# Install curl
-RUN apk --no-cache add curl
-
-# Install Maven
-ENV M2_HOME /app/.mvn
-RUN curl -s --retry 3 -L https://lang-jvm.s3.amazonaws.com/maven-3.3.3.tar.gz | tar xz -C /app
-RUN chmod +x /app/.maven/bin/mvn
-ENV M2_HOME /app/.maven
-ENV PATH /app/.maven/bin:$PATH
-ENV MAVEN_OPTS "-Xmx1024m -Duser.home=/app/usr -Dmaven.repo.local=/app/.m2/repository"
-
-# Run Maven to cache dependencies
-ONBUILD COPY ["pom.xml", "*.properties", "/app/user/"]
-ONBUILD RUN ["mvn", "dependency:resolve"]
-ONBUILD RUN ["mvn", "verify"]
-
-ONBUILD COPY . /app/user/
-ONBUILD RUN ["mvn", "-DskipTests=true", "clean", "package"]
-
-RUN echo "PWD> $PWD"
-RUN ls /app
-
-COPY data/deniro.csv deniro.csv
-COPY data/chinook.db chinook.db
-COPY /app/app.jar app.jar
+COPY /challengeone/data/deniro.csv deniro.csv
+COPY /challengeone/data/chinook.db chinook.db
+COPY /challengeone/target/app.jar app.jar
 
 RUN addgroup -S spring && adduser -S spring -G spring
 RUN chown -R spring:spring /app
 RUN chmod 755 /app
-
-EXPOSE 8080
-
-
 USER spring:spring
 
-
+EXPOSE 8080
 
 ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-Djava.awt.headless=true", "-jar", "/app/app.jar"]
