@@ -6,9 +6,6 @@ RUN apk add bash
 
 WORKDIR /app
 
-RUN pwd
-RUN ls -l
-
 # Install curl
 RUN apk --no-cache add curl
 
@@ -27,6 +24,8 @@ ONBUILD RUN ["mvn", "verify"]
 
 ONBUILD COPY . /app/user/
 ONBUILD RUN ["mvn", "-DskipTests=true", "clean", "package"]
+
+RUN echo "PWD> $PWD"
 
 COPY data/deniro.csv deniro.csv
 COPY data/chinook.db chinook.db
