@@ -9,8 +9,8 @@ WORKDIR /app
 RUN pwd
 RUN ls -l
 
-#Install curl
-apt-get update; apt-get install curl
+# Install curl
+RUN apk --no-cache add curl
 
 # Install Maven
 ENV M2_HOME /app/.mvn
