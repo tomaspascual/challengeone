@@ -26,6 +26,7 @@ ONBUILD COPY . /app/user/
 ONBUILD RUN ["mvn", "-DskipTests=true", "clean", "package"]
 
 RUN echo "PWD> $PWD"
+RUN ls /app
 
 COPY data/deniro.csv deniro.csv
 COPY data/chinook.db chinook.db
