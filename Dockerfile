@@ -9,8 +9,6 @@ WORKDIR /challengeone
 # Just echo so we can see, if everything is there :)
 RUN ls -l
 
-FROM heroku/heroku:18-build AS builder
-
 # Run Maven build
 RUN mvn clean package -Dmaven.test.skip
 
