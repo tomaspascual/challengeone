@@ -19,7 +19,8 @@ RUN apk add bash
 WORKDIR /app
 COPY /challengeone/data/deniro.csv deniro.csv
 COPY /challengeone/data/chinook.db chinook.db
-COPY /challengeone/target/app.jar app.jar
+#COPY /challengeone/target/app.jar app.jar
+COPY --from=0 "/challengeone/target/app.jar" app.jar
 
 RUN addgroup -S spring && adduser -S spring -G spring
 RUN chown -R spring:spring /app
