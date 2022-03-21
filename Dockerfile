@@ -9,6 +9,9 @@ WORKDIR /app
 RUN pwd
 RUN ls -l
 
+#Install curl
+apt-get update; apt-get install curl
+
 # Install Maven
 ENV M2_HOME /app/.mvn
 RUN curl -s --retry 3 -L https://lang-jvm.s3.amazonaws.com/maven-3.3.3.tar.gz | tar xz -C /app
