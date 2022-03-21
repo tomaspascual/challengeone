@@ -10,7 +10,7 @@ WORKDIR /challengeone
 RUN ls -l
 
 # Run Maven build
-RUN mvn clean package -Dmaven.test.skip
+RUN mvn -q clean package -Dmaven.test.skip
 
 WORKDIR /app
 COPY /challengeone/data/deniro.csv deniro.csv
