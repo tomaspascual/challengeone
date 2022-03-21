@@ -6,7 +6,7 @@ WORKDIR /app
 
 COPY data/deniro.csv deniro.csv
 COPY data/chinook.db chinook.db
-COPY ./target/app.jar app.jar
+#COPY ./target/app.jar app.jar
 
 RUN addgroup -S spring && adduser -S spring -G spring
 RUN chown -R spring:spring /app
@@ -19,4 +19,4 @@ USER spring:spring
 
 
 
-ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-Djava.awt.headless=true", "-jar", "/app/app.jar"]
+#ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-Djava.awt.headless=true", "-jar", "/app/app.jar"]
