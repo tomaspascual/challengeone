@@ -2,4 +2,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: java -Dserver.port=$PORT -jar /app/app.jar
+  web: java -XX:+UnlockExperimentalVMOptions -Djava.awt.headless=true -Dserver.port=$PORT -jar /app/app.jar
