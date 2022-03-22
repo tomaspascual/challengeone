@@ -1,4 +1,4 @@
-# Docker multi-stage build
+# Docker multi-stage build (SPECIFICALLY BUILT FOR HEROKU DEPLOYMENT)
 
 # 1. Building the App with Maven
 FROM maven:3-jdk-11
@@ -24,10 +24,13 @@ FROM openjdk:12-alpine
 MAINTAINER Tomas Pascual
 RUN apk add bash
 
-RUN addgroup -S spring && adduser -S spring -G spring
-RUN chown -R spring:spring .
-RUN chmod 755 .
-USER spring:spring
+#RUN addgroup -S spring && adduser -S spring -G spring
+#RUN chown -R spring:spring .
+#RUN chmod 755 .
+#USER spring:spring
+
+RUN adduser -D spring
+USER spring
 
 EXPOSE 8080
 
