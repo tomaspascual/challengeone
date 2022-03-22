@@ -34,4 +34,4 @@ USER myuser
 
 EXPOSE 8080
 
-CMD ["sh", "-c", "java -XX:+UnlockExperimentalVMOptions -Djava.awt.headless=true -Dserver.port=$PORT -jar /app/app.jar"]
+CMD java -XX:+UnlockExperimentalVMOptions -Djava.awt.headless=true -Dserver.port=$PORT -jar /app/app.jar
