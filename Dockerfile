@@ -27,6 +27,6 @@ RUN chown -R spring:spring /app
 RUN chmod 755 /app
 USER spring:spring
 
-EXPOSE $PORT
+EXPOSE 8080
 
-ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-Djava.awt.headless=true", "-jar", "/app/app.jar"]
+ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-Djava.awt.headless=true", "-jar", "/app/app.jar", "--server.port=8080"]
