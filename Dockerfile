@@ -25,8 +25,8 @@ MAINTAINER Tomas Pascual
 RUN apk add bash
 
 RUN addgroup -S spring && adduser -S spring -G spring
-RUN chown -R spring:spring /app
-RUN chmod 755 /app
+RUN chown -R spring:spring .
+RUN chmod 755 .
 USER spring:spring
 
 EXPOSE 8080
