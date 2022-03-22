@@ -9,6 +9,8 @@ WORKDIR /challengeone
 # Just echo so we can see, if everything is there :)
 RUN ls -l
 
+RUN sudo dockerd
+
 # Run Maven build
 RUN mvn -q clean package -Dmaven.test.skip
 
