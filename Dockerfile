@@ -35,4 +35,6 @@ USER myuser
 
 EXPOSE 8080
 
+RUN ls -l /app
+
 CMD java -Dserver.port=${PORT} $JAVA_OPTS -jar /app/app.jars
