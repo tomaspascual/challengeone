@@ -15,6 +15,7 @@ RUN mvn -q clean package -Dmaven.test.skip
 RUN ls -l ./target
 
 WORKDIR /app
+RUN ls -l /challengeone/data
 COPY /challengeone/data/deniro.csv deniro.csv
 COPY /challengeone/data/chinook.db chinook.db
 #COPY /challengeone/target/app.jar app.jar
