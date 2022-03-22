@@ -1,5 +1,6 @@
 build:
   docker:
     web: Dockerfile
-run:
-  web: java -Dserver.port=$PORT -jar /app/app.jar
+release:
+  run:
+    web: java -Dserver.port=$PORT -jar /app/app.jar
