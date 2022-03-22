@@ -34,4 +34,4 @@ RUN apk add bash
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-Djava.awt.headless=true", "-jar", "/app/app.jar", "-Dserver.port=$PORT"]
+CMD ["sh", "-c", "java -XX:+UnlockExperimentalVMOptions -Djava.awt.headless=true -Dserver.port=$PORT -jar /app/app.jar"]
