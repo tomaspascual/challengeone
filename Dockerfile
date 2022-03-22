@@ -17,9 +17,8 @@ RUN ls -l ./target
 WORKDIR /app
 RUN ls -l /challengeone/data
 RUN cp /challengeone/data/deniro.csv /app/deniro.csv
-COPY /challengeone/data/chinook.db chinook.db
-#COPY /challengeone/target/app.jar app.jar
-COPY --from=0 "/challengeone/target/app.jar" app.jar
+RUN cp /challengeone/data/chinook.db /app/chinook.db
+RUN cp /challengeone/target/app.jar /app/app.jar
 
 FROM openjdk:12-alpine
 MAINTAINER Tomas Pascual
