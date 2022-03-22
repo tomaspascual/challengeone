@@ -38,4 +38,4 @@ EXPOSE 8080
 RUN echo $JAVA_OPTS
 RUN echo $PORT
 
-RUN java -Dserver.port=$PORT $JAVA_OPTS -jar /app/app.jars
+RUN java -Dserver.port=$PORT $JAVA_OPTS -jar app.jars
