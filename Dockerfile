@@ -31,4 +31,4 @@ USER spring:spring
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-Djava.awt.headless=true", "-jar", "/app/app.jar", "--server.port=8080"]
+ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-Djava.awt.headless=true", "-jar", "/app/app.jar", "-Dserver.port=$PORT"]
