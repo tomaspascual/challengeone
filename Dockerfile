@@ -23,6 +23,7 @@ RUN cp /challengeone/target/app.jar /app/app.jar
 FROM openjdk:12-alpine
 MAINTAINER Tomas Pascual
 RUN apk add bash
+RUN apk add curl
 
 #RUN addgroup -S spring && adduser -S spring -G spring
 #RUN chown -R spring:spring .
