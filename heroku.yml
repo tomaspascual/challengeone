@@ -1,3 +1,7 @@
 build:
   docker:
-    release: Dockerfile
+    web: Dockerfile
+release:
+    image: web
+    command:
+      - echo 'Starting server after deployment!';
