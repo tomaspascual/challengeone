@@ -16,7 +16,7 @@ RUN ls -l ./target
 
 WORKDIR /app
 RUN ls -l /challengeone/data
-COPY /challengeone/data/deniro.csv deniro.csv
+RUN cp /challengeone/data/deniro.csv /app/deniro.csv
 COPY /challengeone/data/chinook.db chinook.db
 #COPY /challengeone/target/app.jar app.jar
 COPY --from=0 "/challengeone/target/app.jar" app.jar
