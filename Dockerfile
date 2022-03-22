@@ -29,8 +29,8 @@ RUN apk add bash
 #RUN chmod 755 .
 #USER spring:spring
 
-RUN adduser -D spring
-USER spring
+#RUN adduser -D spring
+#USER spring
 
 EXPOSE 8080
 
